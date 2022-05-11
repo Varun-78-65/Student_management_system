@@ -2,12 +2,7 @@
 #include <windows.h>
 #include <mysql.h>
 #include <sstream>
-#include <iomanip>
-#include <conio.h>
-#include <stdio.h>
 #include <string.h>
-#include <process.h>
-#include <stdlib.h>
 #include <unistd.h> // for sleep()
 #define CLS() system("cls")
 #define RULE(x) cout<<'\n'; for(int _=0;_<80;_++) cout<<x; cout<<'\n' //Outputs Horizontal Consisting of 'x's
@@ -150,74 +145,7 @@ deletedb(MYSQL* conn){
     }
 }
 
-/*view(MYSQL* conn)
-{
-    MYSQL_ROW row;
-    MYSQL_RES* res;
-    int roll;
-cout<<"enter student roll number to be searched: ";
-cin>>roll;
-int qstate = 0;
-qstate = mysql_query(conn, "SELECT * FROM student WHERE roll_number = '"+roll+"' ");
-if (!qstate)
-    {
-        res = mysql_store_result(conn);
-        row = mysql_fetch_row(res);
-        cout << "\n" << row[0] << "\t" << row[1] << "\t" << row[2] << "\t" << row[3] << "\n" "\t" << row[4] << "\n" "\t" << row[5] << "\n";
-        }
-        else
-		{
-			cout<<"record not found";
-		}
 
-}
-
-
-update(MYSQL* conn)
-{
-    string st_name;
-    string address;
-    string dob;
-    string blood;
-
-    int x;
-    int roll;
-    int phone;
-
-    if(conn){
-        int qstate = 0;
-        string name;
-        cout<<"Enter the name to modify: ";
-        cin>>name;
-
-        cout<<"press 1 for name change: ";
-        cout<<"press 2 for roll number change: ";
-        cout<<"press 3 for DOB change: ";
-        cout<<"press 4 for address change: ";
-        cout<<"press 5 for phone number change: ";
-        cout<<"press 6 for blood group change: ";
-
-        cout<<"Enter your choice: ";
-        cin>>x;
-
-        if(x==1){
-            cout<<"enter new name: "<<"";
-            cin>>st_name;
-            string ss;
-            ss <<"UPDATE student SET student_name = "<<st_name<<"WHERE CODE ='"+name+"'";
-            string query = ss.str();
-            const char* q = query.c_str();
-            qstate = mysql_query(conn, q);
-            if(qstate==0){
-                cout<<"\nrecord updated"<<endl;
-            }
-            else{
-                cout<<"error";
-            }
-        }
-    }
-
-}*/
 
 
 int main()
@@ -253,7 +181,7 @@ int main()
                 RULE("*");
                 cout<<"\n\t\t\t STUDENT MANAGEMENT SYSTEM \t\t\t\n";
                 RULE("*");
-                cout<<"\t\t\t\t1.INSERTION\n\t\t\t\t2.DISPLAY\n\t\t\t\t3.DELETE\n\t\t\t\t4.UPDATE\n\t\t\t\t6.EXIT\n\n";
+                cout<<"\t\t\t\t1.INSERTION\n\t\t\t\t2.DISPLAY\n\t\t\t\t3.DELETE\n\t\t\t\t4.EXIT\n\n";
                 cin>>c;
                 switch(c){
                     case 1:
@@ -268,15 +196,7 @@ int main()
                         deletedb(conn);
                         goto op;
                         break;
-                    /*case 4:
-                        view(conn);
-                        goto op;
-                        break;*/
-                    /*case 5:
-                        update(conn);
-                        goto op;
-                        break;*/
-                    case 6:
+                    case 4:
                         CLS();
                         load();
                         CLS();
